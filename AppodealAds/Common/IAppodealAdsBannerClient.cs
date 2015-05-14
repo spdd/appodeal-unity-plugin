@@ -3,7 +3,7 @@ using AppodealAds.Api;
 namespace AppodealAds.Common {
 	internal interface IAppodealAdsBannerClient {
 		// Create a banner view and add it into the view hierarchy.
-		void CreateBannerView(string appKey, AdSize adSize, AdPosition position);
+		void CreateBannerView(string appKey, AdPosition position);
 		
 		// Request a new ad for the banner view.
 		void LoadAd();
