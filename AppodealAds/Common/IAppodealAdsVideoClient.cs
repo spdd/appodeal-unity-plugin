@@ -6,7 +6,7 @@ namespace AppodealAds.Common {
 		void CreateVideoAd(string appKey);
 		
 		// Determines whether the video has loaded.
-		bool IsLoaded();
+		bool IsVideoLoaded();
 		
 		// Shows the Videod.
 		void ShowVideoAd();
