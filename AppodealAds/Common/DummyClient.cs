@@ -15,7 +15,7 @@ namespace AppodealAds.Common
 			Debug.Log("Dummy CreateBannerView");
 		}
 		
-		public void LoadAd()
+		public void LoadAd(AODAdRequest request)
 		{
 			Debug.Log("Dummy LoadAd");
 		}

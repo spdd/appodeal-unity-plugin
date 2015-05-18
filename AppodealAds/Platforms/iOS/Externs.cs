@@ -20,7 +20,7 @@ namespace AppodealAds.iOS
 		
 		[DllImport("__Internal")]
 		internal static extern IntPtr AODUCreateBannerView(
-			IntPtr bannerClient, string appKey, int width, int height, int positionAtTop);
+			IntPtr bannerClient, string appKey, int positionAtTop);
 		
 		[DllImport("__Internal")]
 		internal static extern IntPtr AODUCreateSmartBannerView(
@@ -87,24 +87,24 @@ namespace AppodealAds.iOS
 		
 		[DllImport("__Internal")]
 		internal static extern void AODUSetVideoCallbacks(
-			IntPtr interstitial,
-			IOSVideoClient.AODUVVideoAdShouldRewardUserCallback videoRewardCallback,
+			IntPtr video,
+			IOSVideoClient.AODUVideoAdShouldRewardUserCallback videoRewardCallback,
 			IOSVideoClient.AODUVideoDidReceiveAdCallback videoReceivedCallback,
 			IOSVideoClient.AODUVideoDidFailToReceiveAdWithErrorCallback
 			videoFailedCallback,
-			IOSVideoClient.AODUVideoAdDidAppearCallback videoDidPresentCallback,
-			IOSVideoClient.AODUInterstitialDidDismissScreenCallback videoDidDismissCallback,
-			IOSVideoClient.AODUInterstitialWillLeaveApplicationCallback
+			IOSVideoClient.AODUVideoWillPresentScreenCallback videoDidPresentCallback,
+			IOSVideoClient.AODUVideoDidDismissScreenCallback videoDidDismissCallback,
+			IOSVideoClient.AODUVideoWillLeaveApplicationCallback
 			videoWillLeaveCallback);
 		
 		[DllImport("__Internal")]
-		internal static extern bool AODUVideoReady(IntPtr interstitial);
+		internal static extern bool AODUVideoReady(IntPtr video);
 		
 		[DllImport("__Internal")]
-		internal static extern void AODUShowVideo(IntPtr interstitial);
+		internal static extern void AODUShowVideo(IntPtr video);
 		
 		[DllImport("__Internal")]
-		internal static extern void AODURequestVideol(IntPtr interstitial, IntPtr request);
+		internal static extern void AODURequestVideol(IntPtr video, IntPtr request);
 		
 		#endregion
 	}
