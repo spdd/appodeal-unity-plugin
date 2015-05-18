@@ -23,9 +23,9 @@ namespace AppodealAds.Api
 		}
 		
 		// Load an ad into the BannerView.
-		public void LoadAd()
+		public void LoadAd(AODAdRequest request)
 		{
-			client.LoadAd();
+			client.LoadAd(request);
 		}
 		
 		// Hide the BannerView from the screen.

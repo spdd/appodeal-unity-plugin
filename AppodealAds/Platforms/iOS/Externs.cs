@@ -12,25 +12,6 @@ namespace AppodealAds.iOS
 		internal static extern IntPtr AODUCreateRequest();
 		
 		[DllImport("__Internal")]
-		internal static extern void AODUAddTestDevice(IntPtr request, string deviceId);
-		
-		[DllImport("__Internal")]
-		internal static extern void AODUAddKeyword(IntPtr request, string keyword);
-		
-		[DllImport("__Internal")]
-		internal static extern void AODUSetBirthday(IntPtr request, int year, int month, int day);
-		
-		[DllImport("__Internal")]
-		internal static extern void AODUSetGender(IntPtr request, int genderCode);
-		
-		[DllImport("__Internal")]
-		internal static extern void AODUTagForChildDirectedTreatment(
-			IntPtr request, bool childDirectedTreatment);
-		
-		[DllImport("__Internal")]
-		internal static extern void AODUSetExtra(IntPtr request, string key, string value);
-		
-		[DllImport("__Internal")]
 		internal static extern void AODURelease(IntPtr obj);
 		
 		#endregion

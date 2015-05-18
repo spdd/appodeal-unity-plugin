@@ -6,7 +6,7 @@ namespace AppodealAds.Common {
 		void CreateBannerView(string appKey, AdPosition position);
 		
 		// Request a new ad for the banner view.
-		void LoadAd();
+		void LoadAd(AODAdRequest request);
 		
 		// Show the banner view on the screen.
 		void ShowBannerView();
