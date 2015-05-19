@@ -25,11 +25,11 @@
     return ((UnityAppController *)[UIApplication sharedApplication].delegate).rootViewController;
 }
 
-- (id)initWithInterstitialClientReference:(AODUTypeInterstitialClientRef *)interstitialClient
+- (id)initWithVideoClientReference:(AODUTypeVideoClientRef *)videoClient
                                    appKey:(NSString *)appKey {
     self = [super init];
     if (self) {
-        // init video
+        _videoClient = videoClient;
     }
     return self;
 }
@@ -67,7 +67,7 @@
 - (void)onVideoAdDidFailToLoad:(NSString*)adName {
     NSLog(@"video ad from %@ failed to load", adName);
     if(self.adFailedCallback) {
-        self.adFailedCallback(self.videoClient, nil);
+        self.adFailedCallback(self.videoClient, [@"error video" cStringUsingEncoding:NSUTF8StringEncoding]);
     }
 }
 

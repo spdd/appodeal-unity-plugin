@@ -8,6 +8,7 @@ namespace AppodealAds.Api
 		private IAppodealAdsInterstitialClient client;
 		
 		// These are the ad callback events that can be hooked into.
+		public event EventHandler<EventArgs> AdRewardUser = delegate {};
 		public event EventHandler<EventArgs> AdLoaded = delegate {};
 		public event EventHandler<AdFailedToLoadEventArgs> AdFailedToLoad = delegate {};
 		public event EventHandler<EventArgs> AdOpened = delegate {};
@@ -81,6 +82,13 @@ namespace AppodealAds.Api
 		void IAdListener.FireAdLeftApplication()
 		{
 			AdLeftApplication(this, EventArgs.Empty);
+		}
+
+		void IAdListener.FireRewardUser(int amount)
+		{
+			AdRewardUserEventArgs args = new AdRewardUserEventArgs ();
+			args.Amount = amount;
+			AdRewardUser(this, args);
 		}
 		
 		#endregion

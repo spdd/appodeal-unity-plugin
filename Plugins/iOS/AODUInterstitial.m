@@ -29,7 +29,7 @@
                                  appKey:(NSString *)appKey {
     self = [super init];
     if (self) {
-        // init interstitial
+        _interstitialClient = interstitialClient;
     }
     return self;
 }
@@ -48,6 +48,7 @@
 
 - (void)show {
     if ([Appodeal isInterstitialLoaded]) {
+        NSLog(@"AppodealAdsPlugin: Interstitial show.");
         UIViewController *unityController = [AODUInterstitial unityGLViewController];
         [Appodeal showInterstitial:unityController];
     } else {
@@ -66,7 +67,7 @@
 
 - (void)onInterstitialAdFailedToLoad:(NSString*)adName {
     NSLog(@"interstitial from %@ failed to load", adName);
-    self.adFailedCallback(self.interstitialClient, nil);
+    self.adFailedCallback(self.interstitialClient, [@"error interstitial" cStringUsingEncoding:NSUTF8StringEncoding]);
 }
 
 - (void)onInterstitialAdShown:(NSString*)adName {

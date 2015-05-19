@@ -142,7 +142,7 @@ public class AppodealDemo : MonoBehaviour
 	
 	private void ShowInterstitial()
 	{
-		if (interstitial.IsLoaded)
+		if (interstitial.IsLoaded())
 		{
 			interstitial.Show();
 		}

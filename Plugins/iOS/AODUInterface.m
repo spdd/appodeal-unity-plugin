@@ -10,6 +10,7 @@
 #import "AODUInterstitial.h"
 #import "AODUTypes.h"
 #import "AODUVideo.h"
+#import "AODUObjectCache.h"
 #import <AppodealAds/Appodeal.h>
 
 /// Returns an NSString copying the characters from |bytes|, a C array of UTF8-encoded bytes.
@@ -30,9 +31,12 @@ void AODUInitAppodeal(const char *appKey) {
 /// the AODUBannerView.
 AODUTypeBannerRef AODUCreateBannerView(AODUTypeBannerClientRef *bannerClient, const char *appKey,
                                        AODBannerType adPosition) {
-    AODUBanner *banner = [[AODUBanner alloc] initWithBannerClientReference:bannerClient
+    AODUBanner *banner =
+    [[AODUBanner alloc] initWithBannerClientReference:bannerClient
                                              appKey:AODUStringFromUTF8String(appKey)
                                            adPosition:adPosition];
+    AODUObjectCache *cache = [AODUObjectCache sharedInstance];
+    [cache.references setObject:banner forKey:[banner aodu_referenceKey]];
     return (__bridge AODUTypeBannerRef)banner;
 }
 
@@ -40,23 +44,35 @@ AODUTypeBannerRef AODUCreateBannerView(AODUTypeBannerClientRef *bannerClient, co
 /// AODUBannerView.
 AODUTypeBannerRef AODUCreateSmartBannerView(AODUTypeBannerClientRef *bannerClient,
                                             const char *appKey, AODBannerType adPosition) {
-    AODUBanner *banner = [[AODUBanner alloc]
-                          initWithSmartBannerSizeAndBannerClientReference:bannerClient
-                          appKey:AODUStringFromUTF8String(appKey)
-                          adPosition:adPosition];
+    AODUBanner *banner =
+            [[AODUBanner alloc] initWithBannerClientReference:bannerClient
+                                               appKey:AODUStringFromUTF8String(appKey)
+                                           adPosition:adPosition];
+    AODUObjectCache *cache = [AODUObjectCache sharedInstance];
+    [cache.references setObject:banner forKey:[banner aodu_referenceKey]];
     return (__bridge AODUTypeBannerRef)banner;
 }
 
 /// Creates a AODUInterstitial and returns its reference.
 AODUTypeInterstitialRef AODUCreateInterstitial(AODUTypeInterstitialClientRef *interstitialClient,
                                          const char *appKey) {
-    return nil;
+    AODUInterstitial *interstitial = [[AODUInterstitial alloc]
+                                      initWithInterstitialClientReference:interstitialClient
+                                      appKey:AODUStringFromUTF8String(appKey)];
+    AODUObjectCache *cache = [AODUObjectCache sharedInstance];
+    [cache.references setObject:interstitial forKey:[interstitial aodu_referenceKey]];
+    return (__bridge AODUTypeBannerRef)interstitial;
 }
 
 /// Creates a AODUInterstitial and returns its reference.
 AODUTypeVideoRef AODUCreateVideo(AODUTypeVideoClientRef *videoClient,
                                          const char *appKey) {
-    return nil;
+    AODUVideo *video = [[AODUVideo alloc]
+                                      initWithVideoClientReference:videoClient
+                                      appKey:AODUStringFromUTF8String(appKey)];
+    AODUObjectCache *cache = [AODUObjectCache sharedInstance];
+    [cache.references setObject:video forKey:[video aodu_referenceKey]];
+    return (__bridge AODUTypeBannerRef)video;
 }
 
 /// Sets the banner callback methods to be invoked during banner ad events.
@@ -170,7 +186,7 @@ void AODUShowVideo(AODUTypeVideoRef video) {
 }
 
 /// Makes an video ad request.
-void AODURequestVideol(AODUTypeVideoRef video, AODUTypeRequestRef request) {
+void AODURequestVideo(AODUTypeVideoRef video, AODUTypeRequestRef request) {
     AODUVideo *internalVideo = (__bridge AODUVideo *)video;
     [internalVideo loadRequest:nil];
 }
@@ -184,6 +200,7 @@ BOOL AODUVideoReady(AODUTypeVideoRef video) {
 /// Removes an object from the cache.
 void AODURelease(AODUTypeRef ref) {
     if (ref) {
-
+        AODUObjectCache *cache = [AODUObjectCache sharedInstance];
+        [cache.references removeObjectForKey:[(__bridge NSObject *)ref aodu_referenceKey]];
     }
 }
