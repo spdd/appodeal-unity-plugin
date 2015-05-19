@@ -7,7 +7,9 @@
 //
 
 #import "AODUBanner.h"
+#import "AODUInterstitial.h"
 #import "AODUTypes.h"
+#import "AODUVideo.h"
 #import <AppodealAds/Appodeal.h>
 
 /// Returns an NSString copying the characters from |bytes|, a C array of UTF8-encoded bytes.
@@ -46,7 +48,13 @@ AODUTypeBannerRef AODUCreateSmartBannerView(AODUTypeBannerClientRef *bannerClien
 }
 
 /// Creates a AODUInterstitial and returns its reference.
-AODUTypeBannerRef AODUCreateInterstitial(AODUTypeInterstitialClientRef *interstitialClient,
+AODUTypeInterstitialRef AODUCreateInterstitial(AODUTypeInterstitialClientRef *interstitialClient,
+                                         const char *appKey) {
+    return nil;
+}
+
+/// Creates a AODUInterstitial and returns its reference.
+AODUTypeVideoRef AODUCreateVideo(AODUTypeVideoClientRef *videoClient,
                                          const char *appKey) {
     return nil;
 }
@@ -67,7 +75,7 @@ void AODUSetBannerCallbacks(AODUTypeBannerRef banner,
     internalBanner.didDismissCallback = didDismissCallback;
     internalBanner.willLeaveCallback = willLeaveCallback;
 }
-/*
+
 /// Sets the interstitial callback methods to be invoked during interstitial ad events.
 void AODUSetInterstitialCallbacks(
                                   AODUTypeInterstitialRef interstitial, AODUInterstitialDidReceiveAdCallback adReceivedCallback,
@@ -84,7 +92,24 @@ void AODUSetInterstitialCallbacks(
     internalInterstitial.didDismissCallback = didDismissCallback;
     internalInterstitial.willLeaveCallback = willLeaveCallback;
 }
- */
+
+/// Sets the video callback methods to be invoked during video ad events.
+void AODUSetVideoCallbacks(
+                                  AODUTypeVideoRef video, AODUVideoDidReceiveAdCallback adReceivedCallback,
+                                  AODUVideoDidFailToReceiveAdWithErrorCallback adFailedCallback,
+                                  AODUVideoWillPresentScreenCallback willPresentCallback,
+                                  AODUVideoDidDismissScreenCallback didDismissCallback,
+                                  AODUVideoWillLeaveApplicationCallback willLeaveCallback,
+                                    AODUVideoAdShouldRewardUserCallback rewardUserCallback) {
+    AODUVideo *internalVideo = (__bridge AODUVideo *)video;
+    internalVideo.adReceivedCallback = adReceivedCallback;
+    internalVideo.adFailedCallback = adFailedCallback;
+    internalVideo.willPresentCallback = willPresentCallback;
+    internalVideo.didDismissCallback = didDismissCallback;
+    internalVideo.willLeaveCallback = willLeaveCallback;
+    internalVideo.rewardUserCallback = rewardUserCallback;
+}
+
 
 /// Sets the AODBannerView's hidden property to YES.
 void AODUHideBannerView(AODUTypeBannerRef banner) {
@@ -103,7 +128,7 @@ void AODURemoveBannerView(AODUTypeBannerRef banner) {
     AODUBanner *internalBanner = (__bridge AODUBanner *)banner;
     [internalBanner removeBannerView];
 }
-/*
+
 /// Returns YES if the AODInterstitial is ready to be shown.
 BOOL AODUInterstitialReady(AODUTypeInterstitialRef interstitial) {
     AODUInterstitial *internalInterstitial = (__bridge AODUInterstitial *)interstitial;
@@ -118,12 +143,12 @@ void AODUShowInterstitial(AODUTypeInterstitialRef interstitial) {
 
 /// Creates an empty AODRequest and returns its reference.
 AODUTypeRequestRef AODUCreateRequest() {
-    AODURequest *request = [[AODURequest alloc] init];
-    AODUObjectCache *cache = [AODUObjectCache sharedInstance];
-    [cache.references setObject:request forKey:[request AODu_referenceKey]];
-    return (__bridge AODUTypeRequestRef)(request);
+    //AODURequest *request = [[AODURequest alloc] init];
+    //AODUObjectCache *cache = [AODUObjectCache sharedInstance];
+    //[cache.references setObject:request forKey:[request AODu_referenceKey]];
+    return nil;
 }
- */
+
 
 /// Makes a banner ad request.
 void AODURequestBannerAd(AODUTypeBannerRef banner, AODUTypeRequestRef request) {
@@ -131,14 +156,30 @@ void AODURequestBannerAd(AODUTypeBannerRef banner, AODUTypeRequestRef request) {
     [internalBanner loadRequest:nil];
 }
 
-/*
+
 /// Makes an interstitial ad request.
 void AODURequestInterstitial(AODUTypeInterstitialRef interstitial, AODUTypeRequestRef request) {
     AODUInterstitial *internalInterstitial = (__bridge AODUInterstitial *)interstitial;
-    AODURequest *internalRequest = (__bridge AODURequest *)request;
-    [internalInterstitial loadRequest:[internalRequest request]];
+    [internalInterstitial loadRequest:nil];
 }
- */
+
+/// Shows the AODVideo.
+void AODUShowVideo(AODUTypeVideoRef video) {
+    AODUVideo *internalVideo = (__bridge AODUVideo *)video;
+    [internalVideo show];
+}
+
+/// Makes an video ad request.
+void AODURequestVideol(AODUTypeVideoRef video, AODUTypeRequestRef request) {
+    AODUVideo *internalVideo = (__bridge AODUVideo *)video;
+    [internalVideo loadRequest:nil];
+}
+
+/// Returns YES if the AODVideo is ready to be shown.
+BOOL AODUVideoReady(AODUTypeVideoRef video) {
+    AODUVideo *internalVideo = (__bridge AODUVideo *)video;
+    return [internalVideo isReady];
+}
 
 /// Removes an object from the cache.
 void AODURelease(AODUTypeRef ref) {
