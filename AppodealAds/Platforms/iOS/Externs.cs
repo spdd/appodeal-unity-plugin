@@ -7,6 +7,9 @@ namespace AppodealAds.iOS
 	internal class Externs
 	{
 		#region Common externs
+
+		[DllImport("__Internal")]
+		internal static extern void AODUInitAppodeal(string appKey);
 		
 		[DllImport("__Internal")]
 		internal static extern IntPtr AODUCreateRequest();

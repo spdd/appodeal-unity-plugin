@@ -9,7 +9,7 @@ namespace AppodealAds.Api
 		public const string Version = "0.0.1";
 		public const string TestDeviceSimulator = "SIMULATOR";
 		
-		private AODAdRequest()
+		public AODAdRequest()
 		{
 		}
 	}

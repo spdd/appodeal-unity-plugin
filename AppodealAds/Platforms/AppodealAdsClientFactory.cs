@@ -6,6 +6,21 @@ namespace AppodealAds
 {
 	internal class AppodealAdsClientFactory
 	{
+		internal static IAppodealAdsClient GetAppodealAdsClient()
+		{
+			#if UNITY_EDITOR
+			// Testing UNITY_EDITOR first because the editor also responds to the currently
+			// selected platform.
+			return null;
+			#elif UNITY_ANDROID
+			return new AppodealAds.Android.AndroidAppodealClient();
+			#elif UNITY_IPHONE
+			return new AppodealAds.iOS.IOSAppodealClient();
+			#else
+			return null;
+			#endif
+		}
+
 		internal static IAppodealAdsBannerClient GetAppodealAdsBannerClient(
 			IAdListener listener)
 		{

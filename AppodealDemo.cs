@@ -8,6 +8,8 @@ public class AppodealDemo : MonoBehaviour
 {
 	
 	private BannerView bannerView;
+	private Appodeal appodeal;
+	private InterstitialAd interstitial;
 
 	void OnGUI()
 	{
@@ -16,16 +18,17 @@ public class AppodealDemo : MonoBehaviour
 		
 		Rect requestBannerRect = new Rect(0.1f * Screen.width, 0.05f * Screen.height,
 		                                  0.8f * Screen.width, 0.1f * Screen.height);
-		if (GUI.Button(requestBannerRect, "Request Banner"))
+		if (GUI.Button(requestBannerRect, "InitSDK"))
 		{
-			RequestBanner();
+			initAppodeal();
 		}
 		
 		Rect showBannerRect = new Rect(0.1f * Screen.width, 0.175f * Screen.height,
 		                               0.8f * Screen.width, 0.1f * Screen.height);
 		if (GUI.Button(showBannerRect, "Show Banner"))
 		{
-			bannerView.Show();
+			RequestBanner();
+			//bannerView.Show();
 		}
 		
 		Rect hideBannerRect = new Rect(0.1f * Screen.width, 0.3f * Screen.height,
@@ -46,7 +49,7 @@ public class AppodealDemo : MonoBehaviour
 		                                        0.8f * Screen.width, 0.1f * Screen.height);
 		if (GUI.Button(requestInterstitialRect, "Request Interstitial"))
 		{
-			//RequestInterstitial();
+			RequestInterstitial();
 		}
 		
 		Rect showInterstitialRect = new Rect(0.1f * Screen.width, 0.675f * Screen.height,
@@ -62,6 +65,21 @@ public class AppodealDemo : MonoBehaviour
 		{
 			//show video
 		}
+	}
+
+	private void initAppodeal() {
+		#if UNITY_EDITOR
+		string appKey = "a23f1c3c5f3a996c6f92ffdb6cb7f52ba14b26e45aab3188";
+		#elif UNITY_ANDROID
+		string appKey = "INSERT_APPKEY_HERE";
+		#elif UNITY_IPHONE
+		string appKey = "a23f1c3c5f3a996c6f92ffdb6cb7f52ba14b26e45aab3188";
+		#else
+		string appKey = "unexpected_platform";
+		#endif
+
+		appodeal = new Appodeal();
+		appodeal.initWithAppKey(appKey);
 	}
 	
 	private void RequestBanner()
@@ -98,11 +116,11 @@ public class AppodealDemo : MonoBehaviour
 		#elif UNITY_IPHONE
 		string appKey = "INSERT_APPKEY_HERE";
 		#else
-		string adUnitId = "unexpected_platform";
+		string appKey = "unexpected_platform";
 		#endif
-		/*
+
 		// Create an interstitial.
-		interstitial = new InterstitialAd(adUnitId);
+		interstitial = new InterstitialAd(appKey);
 		// Register for ad events.
 		interstitial.AdLoaded += HandleInterstitialLoaded;
 		interstitial.AdFailedToLoad += HandleInterstitialFailedToLoad;
@@ -112,7 +130,7 @@ public class AppodealDemo : MonoBehaviour
 		interstitial.AdLeftApplication += HandleInterstitialLeftApplication;
 		// Load an interstitial ad.
 		interstitial.LoadAd(createAdRequest());
-		*/
+
 	}
 	
 	// Returns an ad request with custom ad targeting.
@@ -124,9 +142,9 @@ public class AppodealDemo : MonoBehaviour
 	
 	private void ShowInterstitial()
 	{
-		if (true) // isLoaded
+		if (interstitial.IsLoaded)
 		{
-			//interstitial.Show();
+			interstitial.Show();
 		}
 		else
 		{
