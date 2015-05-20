@@ -21,8 +21,8 @@ Requirements
 * An appKey
 * To deploy on iOS:
     * XCode 5.1 or above
-    * [Appodeal-iOS-SDK.zip](http://dl.dropbox.com/s/tandgz79v1t971q/Appodeal-iOS-SDK.zip)
-    7.0.0 or higher
+    * [Appodeal-iOS-SDK.zip](http://dl.dropbox.com/s/tandgz79v1t971q/Appodeal-iOS-SDK.zip)[check Getting Started](https://github.com/appodeal/appodeal-ios-demo/wiki/Getting-Started)
+    * 7.0.0 or higher
 
 Downloads
 ----------
