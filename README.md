@@ -37,6 +37,31 @@ Integrate the Plugin into your Game
 4. Import all of the files for the plugins by selecting **Import**. Make sure
 to check for any conflicts with files.
 
+iOS Setup
+---------
+
+No pre-build setup required.
+
+Run the project
+---------------
+
+If you're running the **AppodealDemo** sample project, you should be able to run
+the project now.
+
+To build and run on iOS, click **File -> Build Settings**, select the iOS
+platform, then **Switch Platform**, then **Build**. This will export an
+XCode project. You'll need to do the following before you can run it:
+
+1. From the Xcode project navigator, right-click on the project, and choose
+Add Files To "<Project Name>".
+2. Navigate to and select **AppodealAds folder**.
+3. Set **Enable Modules (C and Objective-C)** to **Yes** in
+**Build Settings**.
+
+If you encounter any issues, do not hesitate to contact our happy support team
+at [ios@appodeal.com](mailto:ios@appodeal.com).
+
+
 Appodeal Ads Unity API
 ===========================
 
