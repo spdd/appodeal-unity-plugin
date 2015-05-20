@@ -61,8 +61,7 @@ Here is the minimal code needed to create a banner.
 using AppodealAds.Api;
 ...
 // Create banner at the top of the screen.
-BannerView bannerView = new BannerView(
-"YOUR_APPKEY", AdPosition.TopPortrait);
+BannerView bannerView = new BannerView("YOUR_APPKEY", AdPosition.TopPortrait);
 // Create an empty ad request.
 AODAdRequest request = new AODAdRequest();
 // Load the banner with the request.
@@ -99,7 +98,7 @@ Here is the minimal code to create an video ad.
 ```c#
 using AppodealAds.Api;
 ...
-// Initialize an InterstitialAd.
+// Initialize an VideoAd.
 VideoAd video = new VideoAd("YOUR_APPKEY");
 // Create an empty ad request.
 AODAdRequest request = new AODAdRequest();
