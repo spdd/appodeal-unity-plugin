@@ -37,6 +37,85 @@ Integrate the Plugin into your Game
 4. Import all of the files for the plugins by selecting **Import**. Make sure
 to check for any conflicts with files.
 
+Appodeal Ads Unity API
+===========================
+
+The remainder of this guide assumes you are now attempting to write your own
+code to integrate Appodeal Ads into your game.
+
+Appodeal Ads Initialization 
+-----------------
+Here is the minimal code needed to initialize Appodeal Ads.
+string appKey = "YOUR_APPKEY";
+
+Appodeal appodeal = new Appodeal();
+appodeal.initWithAppKey(appKey);
+
+Basic Banner Flow
+-----------------
+Here is the minimal code needed to create a banner.
+
+using AppodealAds.Api;
+...
+// Create banner at the top of the screen.
+BannerView bannerView = new BannerView(
+"YOUR_APPKEY", AdPosition.TopPortrait);
+// Create an empty ad request.
+AODAdRequest request = new AODAdRequest();
+// Load the banner with the request.
+bannerView.LoadAd(request);
+
+Basic Interstitial Flow
+-----------------------
+Here is the minimal banner code to create an interstitial.
+
+using AppodealAds.Api;
+...
+// Initialize an InterstitialAd.
+InterstitialAd interstitial = new InterstitialAd("YOUR_APPKEY");
+// Create an empty ad request.
+AODAdRequest request = new AODAdRequest();
+// Load the interstitial with the request.
+interstitial.LoadAd(request);
+
+Unlike banners, interstitials need to be explicitly shown. At an appropriate
+stopping point in your app, check that the interstitail is ready before
+showing it:
+
+if (interstitial.IsLoaded()) {
+    interstitial.Show();
+}
+
+Basic Video Flow
+-----------------------
+Here is the minimal code to create an video ad.
+
+using AppodealAds.Api;
+...
+// Initialize an InterstitialAd.
+VideoAd video = new VideoAd("YOUR_APPKEY");
+// Create an empty ad request.
+AODAdRequest request = new AODAdRequest();
+// Load the video with the request.
+video.LoadAd(request);
+
+Unlike banners, video need to be explicitly shown. At an appropriate
+stopping point in your app, check that the video is ready before
+showing it:
+
+if (video.IsLoaded()) {
+    video.Show();
+}
+
+Banner Placement Locations
+--------------------------
+The following constants list the available ad positions:
+
+AdPosition.TopPortrait
+AdPosition.BottomPortrait
+AdPosition.TopLandscape
+AdPosition.BottomLandscape
+
 Documentation Appodeal iOS SDK
 --------------
 Check out our [documentation](https://github.com/appodeal/appodeal-ios-demo/wiki) for documentation on using the SDK
