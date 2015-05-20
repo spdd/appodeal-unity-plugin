@@ -10,6 +10,7 @@ public class AppodealDemo : MonoBehaviour
 	private BannerView bannerView;
 	private Appodeal appodeal;
 	private InterstitialAd interstitial;
+	private VideoAd video;
 
 	void OnGUI()
 	{
@@ -63,7 +64,8 @@ public class AppodealDemo : MonoBehaviour
 		                                        0.8f * Screen.width, 0.1f * Screen.height);
 		if (GUI.Button(showVideoRect, "Show Video"))
 		{
-			//show video
+			RequestVideo();
+			ShowVideo();
 		}
 	}
 
@@ -132,6 +134,33 @@ public class AppodealDemo : MonoBehaviour
 		interstitial.LoadAd(createAdRequest());
 
 	}
+
+	private void RequestVideo()
+	{
+		#if UNITY_EDITOR
+		string appKey = "unused";
+		#elif UNITY_ANDROID
+		string appKey = "INSERT_APPKEY_HERE";
+		#elif UNITY_IPHONE
+		string appKey = "INSERT_APPKEY_HERE";
+		#else
+		string appKey = "unexpected_platform";
+		#endif
+		
+		// Create an video.
+		video = new VideoAd(appKey);
+		// Register for ad events.
+		video.AdLoaded += HandleVideoLoaded;
+		video.AdFailedToLoad += HandleVideoFailedToLoad;
+		video.AdOpened += HandleVideoOpened;
+		video.AdClosing += HandleVideoClosing;
+		video.AdClosed += HandleVideoClosed;
+		video.AdLeftApplication += HandleVideoLeftApplication;
+		video.AdRewardUser += HandleVideoRewardUser;
+		// Load an video ad.
+		video.LoadAd(createAdRequest());
+		
+	}
 	
 	// Returns an ad request with custom ad targeting.
 	private AODAdRequest createAdRequest()
@@ -149,6 +178,19 @@ public class AppodealDemo : MonoBehaviour
 		else
 		{
 			print("Interstitial is not ready yet.");
+		}
+	}
+
+
+	private void ShowVideo()
+	{
+		if (video.IsLoaded())
+		{
+			video.Show();
+		}
+		else
+		{
+			print("Video is not ready yet.");
 		}
 	}
 	
@@ -216,6 +258,45 @@ public class AppodealDemo : MonoBehaviour
 	public void HandleInterstitialLeftApplication(object sender, EventArgs args)
 	{
 		print("HandleInterstitialLeftApplication event received");
+	}
+	
+	#endregion
+
+	#region Video callback handlers
+	
+	public void HandleVideoLoaded(object sender, EventArgs args)
+	{
+		print("HandleVideoLoaded event received.");
+	}
+	
+	public void HandleVideoFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+	{
+		print("HandleVideoFailedToLoad event received with message: " + args.Message);
+	}
+	
+	public void HandleVideoOpened(object sender, EventArgs args)
+	{
+		print("HandleVideoOpened event received");
+	}
+	
+	void HandleVideoClosing(object sender, EventArgs args)
+	{
+		print("HandleVideoClosing event received");
+	}
+	
+	public void HandleVideoClosed(object sender, EventArgs args)
+	{
+		print("HandleVideoClosed event received");
+	}
+	
+	public void HandleVideoLeftApplication(object sender, EventArgs args)
+	{
+		print("HandleVideoLeftApplication event received");
+	}
+
+	public void HandleVideoRewardUser(object sender, AdRewardUserEventArgs args)
+	{
+		print("HandleRewardUser event received, reward: " + args.Amount);
 	}
 	
 	#endregion

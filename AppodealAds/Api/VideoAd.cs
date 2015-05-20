@@ -3,9 +3,9 @@ using AppodealAds.Common;
 
 namespace AppodealAds.Api
 {
-	public class InterstitialAd : IAdListener
+	public class VideoAd : IAdListener
 	{
-		private IAppodealAdsInterstitialClient client;
+		private IAppodealAdsVideoClient client;
 		
 		// These are the ad callback events that can be hooked into.
 		public event EventHandler<EventArgs> AdRewardUser = delegate {};
@@ -17,10 +17,10 @@ namespace AppodealAds.Api
 		public event EventHandler<EventArgs> AdLeftApplication = delegate {};
 		
 		// Creates an InsterstitialAd.
-		public InterstitialAd(string appKey)
+		public VideoAd(string appKey)
 		{
-			client = AppodealAdsClientFactory.GetAppodealAdsInterstitialClient(this);
-			client.CreateInterstitialAd(appKey);
+			client = AppodealAdsClientFactory.GetAppodealAdsVideoClient(this);
+			client.CreateVideoAd(appKey);
 		}
 		
 		// Loads a new interstitial request
@@ -29,27 +29,27 @@ namespace AppodealAds.Api
 			client.LoadAd(request);
 		}
 		
-		// Determines whether the InterstitialAd has loaded.
+		// Determines whether the VideoAd has loaded.
 		public bool IsLoaded()
 		{
 			return client.IsLoaded();
 		}
 		
-		// Show the InterstitialAd.
+		// Show the VideoAd.
 		public void Show()
 		{
-			client.ShowInterstitial();
+			client.ShowVideoAd();
 		}
 		
-		// Destroy the InterstitialAd.
+		// Destroy the VideoAd.
 		public void Destroy()
 		{
-			client.DestroyInterstitial();
+			client.DestroyVideoAd();
 		}
 		
 		#region IAdListener implementation
 		
-		// The following methods are invoked from an IAppodealAdsInterstitialClient. Forward
+		// The following methods are invoked from an IAppodealAdsVideoClient. Forward
 		// these calls to the developer.
 		void IAdListener.FireAdLoaded()
 		{
@@ -83,7 +83,7 @@ namespace AppodealAds.Api
 		{
 			AdLeftApplication(this, EventArgs.Empty);
 		}
-
+		
 		void IAdListener.FireRewardUser(int amount)
 		{
 			AdRewardUserEventArgs args = new AdRewardUserEventArgs ();

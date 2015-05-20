@@ -60,7 +60,7 @@ namespace AppodealAds.iOS
 				VideoWillLeaveApplicationCallback);
 		}
 		
-		public bool IsVideoLoaded() {
+		public bool IsLoaded() {
 			return Externs.AODUVideoReady(VideoPtr);
 		}
 		

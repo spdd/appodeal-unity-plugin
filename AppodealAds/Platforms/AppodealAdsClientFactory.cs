@@ -52,5 +52,21 @@ namespace AppodealAds
 			return new AppodealAds.Common.DummyClient(listener);
 			#endif
 		}
+
+		internal static IAppodealAdsVideoClient GetAppodealAdsVideoClient(
+			IAdListener listener)
+		{
+			#if UNITY_EDITOR
+			// Testing UNITY_EDITOR first because the editor also responds to the currently
+			// selected platform.
+			return new AppodealAds.Common.DummyClient(listener);
+			#elif UNITY_ANDROID
+			return new AppodealAds.Android.AndroidVideoClient(listener);
+			#elif UNITY_IPHONE
+			return new AppodealAds.iOS.IOSVideoClient(listener);
+			#else
+			return new AppodealAds.Common.DummyClient(listener);
+			#endif
+		}
 	}
 }

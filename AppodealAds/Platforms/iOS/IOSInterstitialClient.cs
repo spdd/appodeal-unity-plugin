@@ -60,6 +60,13 @@ namespace AppodealAds.iOS
 				InterstitialDidDismissScreenCallback,
 				InterstitialWillLeaveApplicationCallback);
 		}
+
+		public void LoadAd(AODAdRequest request) {
+			IntPtr requestPtr = Externs.AODUCreateRequest();
+
+			Externs.AODURequestInterstitial(InterstitialPtr, requestPtr);
+			Externs.AODURelease(requestPtr);
+		}
 		
 		public bool IsLoaded() {
 			return Externs.AODUInterstitialReady(InterstitialPtr);

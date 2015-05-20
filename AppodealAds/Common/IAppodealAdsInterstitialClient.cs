@@ -5,6 +5,9 @@ namespace AppodealAds.Common {
 		// Initialization AppodealAds and creates an InterstitialAd
 		void CreateInterstitialAd(string appKey);
 
+		// Loads a new interstitial request.
+		void LoadAd(AODAdRequest request);
+
 		// Determines whether the interstitial has loaded.
 		bool IsLoaded();
 		

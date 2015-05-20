@@ -107,7 +107,7 @@ namespace AppodealAds.iOS
 		internal static extern void AODUShowVideo(IntPtr video);
 		
 		[DllImport("__Internal")]
-		internal static extern void AODURequestVideol(IntPtr video, IntPtr request);
+		internal static extern void AODURequestVideo(IntPtr video, IntPtr request);
 		
 		#endregion
 	}
