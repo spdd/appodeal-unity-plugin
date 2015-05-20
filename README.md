@@ -47,9 +47,10 @@ Appodeal Ads Initialization
 -----------------
 Here is the minimal code needed to initialize Appodeal Ads.
 string appKey = "YOUR_APPKEY";
-
+```c#
 Appodeal appodeal = new Appodeal();
 appodeal.initWithAppKey(appKey);
+```
 
 Basic Banner Flow
 -----------------
