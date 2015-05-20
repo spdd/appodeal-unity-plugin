@@ -48,6 +48,8 @@ Appodeal Ads Initialization
 Here is the minimal code needed to initialize Appodeal Ads.
 string appKey = "YOUR_APPKEY";
 ```c#
+using AppodealAds.Api;
+...
 Appodeal appodeal = new Appodeal();
 appodeal.initWithAppKey(appKey);
 ```
@@ -55,7 +57,7 @@ appodeal.initWithAppKey(appKey);
 Basic Banner Flow
 -----------------
 Here is the minimal code needed to create a banner.
-
+```c#
 using AppodealAds.Api;
 ...
 // Create banner at the top of the screen.
@@ -65,11 +67,13 @@ BannerView bannerView = new BannerView(
 AODAdRequest request = new AODAdRequest();
 // Load the banner with the request.
 bannerView.LoadAd(request);
+```
 
 Basic Interstitial Flow
 -----------------------
 Here is the minimal banner code to create an interstitial.
 
+```c#
 using AppodealAds.Api;
 ...
 // Initialize an InterstitialAd.
@@ -86,11 +90,13 @@ showing it:
 if (interstitial.IsLoaded()) {
     interstitial.Show();
 }
+```
 
 Basic Video Flow
 -----------------------
 Here is the minimal code to create an video ad.
 
+```c#
 using AppodealAds.Api;
 ...
 // Initialize an InterstitialAd.
@@ -107,15 +113,20 @@ showing it:
 if (video.IsLoaded()) {
     video.Show();
 }
+```
+
 
 Banner Placement Locations
 --------------------------
 The following constants list the available ad positions:
 
+```c#
 AdPosition.TopPortrait
 AdPosition.BottomPortrait
 AdPosition.TopLandscape
 AdPosition.BottomLandscape
+```
+
 
 Documentation Appodeal iOS SDK
 --------------
