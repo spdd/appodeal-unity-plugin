@@ -8,7 +8,7 @@ namespace AppodealAds.Api
 		private IAppodealAdsVideoClient client;
 		
 		// These are the ad callback events that can be hooked into.
-		public event EventHandler<EventArgs> AdRewardUser = delegate {};
+		public event EventHandler<AdRewardUserEventArgs> AdRewardUser = delegate {};
 		public event EventHandler<EventArgs> AdLoaded = delegate {};
 		public event EventHandler<AdFailedToLoadEventArgs> AdFailedToLoad = delegate {};
 		public event EventHandler<EventArgs> AdOpened = delegate {};

@@ -32,20 +32,23 @@ public class AppodealDemo : MonoBehaviour
 			//bannerView.Show();
 		}
 		
-		Rect hideBannerRect = new Rect(0.1f * Screen.width, 0.3f * Screen.height,
+		Rect showInterstitialRect = new Rect(0.1f * Screen.width, 0.3f * Screen.height,
 		                               0.8f * Screen.width, 0.1f * Screen.height);
-		if (GUI.Button(hideBannerRect, "Hide Banner"))
+		if (GUI.Button(showInterstitialRect, "Show Interstitial"))
 		{
-			bannerView.Hide();
+			RequestInterstitial();
+			ShowInterstitial();
 		}
 		
-		Rect destroyBannerRect = new Rect(0.1f * Screen.width, 0.425f * Screen.height,
+		Rect showVideoRect = new Rect(0.1f * Screen.width, 0.425f * Screen.height,
 		                                  0.8f * Screen.width, 0.1f * Screen.height);
-		if (GUI.Button(destroyBannerRect, "Destroy Banner"))
+		if (GUI.Button(showVideoRect, "Show Video"))
 		{
-			bannerView.Destroy();
+			RequestVideo();
+			ShowVideo();
 		}
-		
+
+		/*
 		Rect requestInterstitialRect = new Rect(0.1f * Screen.width, 0.55f * Screen.height,
 		                                        0.8f * Screen.width, 0.1f * Screen.height);
 		if (GUI.Button(requestInterstitialRect, "Request Interstitial"))
@@ -57,6 +60,7 @@ public class AppodealDemo : MonoBehaviour
 		                                     0.8f * Screen.width, 0.1f * Screen.height);
 		if (GUI.Button(showInterstitialRect, "Show Interstitial"))
 		{
+			RequestInterstitial();
 			ShowInterstitial();
 		}
 		
@@ -67,6 +71,7 @@ public class AppodealDemo : MonoBehaviour
 			RequestVideo();
 			ShowVideo();
 		}
+		*/
 	}
 
 	private void initAppodeal() {
@@ -97,7 +102,7 @@ public class AppodealDemo : MonoBehaviour
 		#endif
 		
 		// Create a 320x50 banner at the top of the screen.
-		bannerView = new BannerView(appKey, AdPosition.BottomPortrait);
+		bannerView = new BannerView(appKey, AdPosition.TopPortrait);
 		// Register for ad events.
 		bannerView.AdLoaded += HandleAdLoaded;
 		bannerView.AdFailedToLoad += HandleAdFailedToLoad;

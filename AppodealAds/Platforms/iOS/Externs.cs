@@ -57,19 +57,19 @@ namespace AppodealAds.iOS
 		
 		[DllImport("__Internal")]
 		internal static extern IntPtr AODUCreateInterstitial(
-			IntPtr interstitialClient, string adUnitId);
+			IntPtr interstitialClient, string appKey);
 		
 		[DllImport("__Internal")]
 		internal static extern void AODUSetInterstitialCallbacks(
 			IntPtr interstitial,
-			IOSInterstitialClient.AODUInterstitialDidReceiveAdCallback adReceivedCallback,
+			IOSInterstitialClient.AODUInterstitialDidReceiveAdCallback interstitialReceivedCallback,
 			IOSInterstitialClient.AODUInterstitialDidFailToReceiveAdWithErrorCallback
-			adFailedCallback,
-			IOSInterstitialClient.AODUInterstitialWillPresentScreenCallback willPresentCallback,
-			IOSInterstitialClient.AODUInterstitialWillDismissScreenCallback willDismissCallback,
-			IOSInterstitialClient.AODUInterstitialDidDismissScreenCallback didDismissCallback,
+			interstitialFailedCallback,
+			IOSInterstitialClient.AODUInterstitialWillPresentScreenCallback interstitialWillPresentCallback,
+			IOSInterstitialClient.AODUInterstitialWillDismissScreenCallback interstitialWillDismissCallback,
+			IOSInterstitialClient.AODUInterstitialDidDismissScreenCallback interstitialDidDismissCallback,
 			IOSInterstitialClient.AODUInterstitialWillLeaveApplicationCallback
-			willLeaveCallback);
+			interstitialWillLeaveCallback);
 		
 		[DllImport("__Internal")]
 		internal static extern bool AODUInterstitialReady(IntPtr interstitial);

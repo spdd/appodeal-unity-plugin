@@ -24,6 +24,7 @@ static NSString *AODUStringFromUTF8String(const char *bytes) {
 }
 
 void AODUInitAppodeal(const char *appKey) {
+    NSLog(@"%@", AODUStringFromUTF8String(appKey));
     [Appodeal initWithAppId:AODUStringFromUTF8String(appKey)];
 }
 

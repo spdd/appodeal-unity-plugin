@@ -59,6 +59,13 @@ namespace AppodealAds.iOS
 				VideoDidDismissScreenCallback,
 				VideoWillLeaveApplicationCallback);
 		}
+
+		public void LoadAd(AODAdRequest request) {
+			IntPtr requestPtr = Externs.AODUCreateRequest();
+			
+			Externs.AODURequestVideo(VideoPtr, requestPtr);
+			Externs.AODURelease(requestPtr);
+		}
 		
 		public bool IsLoaded() {
 			return Externs.AODUVideoReady(VideoPtr);
@@ -77,9 +84,9 @@ namespace AppodealAds.iOS
 		#region Banner callback methods
 		
 		[MonoPInvokeCallback(typeof(AODUVideoDidReceiveAdCallback))]
-		private static void VideoDidReceiveAdCallback(IntPtr interstitialClient)
+		private static void VideoDidReceiveAdCallback(IntPtr videoClient)
 		{
-			IntPtrToVideoClient(interstitialClient).listener.FireAdLoaded();
+			IntPtrToVideoClient(videoClient).listener.FireAdLoaded();
 		}
 		
 		[MonoPInvokeCallback(typeof(AODUVideoDidFailToReceiveAdWithErrorCallback))]
