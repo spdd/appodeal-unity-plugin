@@ -71,10 +71,10 @@ code to integrate Appodeal Ads into your game.
 Appodeal Ads Initialization 
 -----------------
 Here is the minimal code needed to initialize Appodeal Ads.
-string appKey = "YOUR_APPKEY";
 ```c#
 using AppodealAds.Api;
 ...
+string appKey = "YOUR_APPKEY";
 Appodeal appodeal = new Appodeal();
 appodeal.initWithAppKey(appKey);
 ```
