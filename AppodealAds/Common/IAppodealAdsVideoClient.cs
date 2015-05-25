@@ -16,5 +16,15 @@ namespace AppodealAds.Common {
 		
 		// Destroys an Video to free up memory.
 		void DestroyVideoAd();
+
+		void Cache ();
+		
+		bool IsPrecache ();
+		
+		bool ShowWithPriceFloor ();
+		
+		void SetAutoCache (bool autoCache);
+		
+		void SetOnLoadedTriggerBoth(bool onLoadedTriggerBoth);
 	}
 }

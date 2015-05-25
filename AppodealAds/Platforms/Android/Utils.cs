@@ -13,13 +13,8 @@ namespace AppodealAds.Android
 		
 		#region Appodeal Ads SDK class names
 		
-		public const string AdListenerClassName = "com.google.android.gms.ads.AdListener";
-		public const string AdRequestClassName = "com.google.android.gms.ads.AdRequest";
-		public const string AdRequestBuilderClassName =
-			"com.google.android.gms.ads.AdRequest$Builder";
-		public const string AdSizeClassName = "com.google.android.gms.ads.AdSize";
-		public const string AdMobExtrasClassName =
-			"com.google.android.gms.ads.mediation.admob.AdMobExtras";
+		public const string AdListenerClassName = "com.appodeal.ads.Appodeal.AdListener";
+		public const string AdRequestClassName = "com.appodeal.ads.Appodeal.AODAdRequest";
 		
 		#endregion
 		
@@ -27,7 +22,28 @@ namespace AppodealAds.Android
 		
 		public const string BannerViewClassName = "com.appodeal.ads.Appodeal";
 		public const string InterstitialClassName = "com.appodeal.ads.Appodeal";
-		public const string UnityAdListenerClassName = "com.google.unity.ads.UnityAdListener";
+		public const string VideoClassName = "com.appodeal.ads.Appodeal";
+		public const string UnityAdBannerListenerClassName = "com.appodeal.ads.BannerCallbacks";
+		public const string UnityVideoAdListenerClassName = "com.appodeal.ads.VideoCallbacks";
+		public const string UnityInterstitialAdListenerClassName = "com.appodeal.ads.InterstitialCallbacks";
+
+		public static string GetListenerFromType(AdType type) 
+		{
+			switch (type) 
+			{
+			case AdType.BANNER:
+				return UnityAdBannerListenerClassName;
+				break;
+			case AdType.INTERSTITIAL:
+				return UnityInterstitialAdListenerClassName;
+				break;
+			case AdType.VIDEO:
+				return UnityVideoAdListenerClassName;
+				break;
+			default:
+				return UnityAdBannerListenerClassName;
+			}
+		}
 		
 		#endregion
 		

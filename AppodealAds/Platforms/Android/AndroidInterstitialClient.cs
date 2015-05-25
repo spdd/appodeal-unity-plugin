@@ -40,7 +40,7 @@ namespace AppodealAds.Android
 		
 		public bool IsLoaded() 
 		{
-			return interstitial.Call<bool>("isLoaded");
+			return interstitial.Call<bool>("isLoaded", adType);
 		}
 		
 		public void ShowInterstitial() 

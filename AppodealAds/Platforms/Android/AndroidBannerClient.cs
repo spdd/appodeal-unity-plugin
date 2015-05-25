@@ -41,7 +41,7 @@ namespace AppodealAds.Android
 
 		public bool IsLoaded() 
 		{
-			return bannerView.CallStatic<bool>("isLoaded");
+			return bannerView.CallStatic<bool>("isLoaded", adType);
 		}
 
 		// Show the banner view on the screen.
