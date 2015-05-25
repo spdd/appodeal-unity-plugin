@@ -1,4 +1,4 @@
-﻿
+﻿#if UNITY_ANDROID
 
 using System;
 using System.Collections.Generic;
@@ -67,3 +67,4 @@ namespace AppodealAds.Android
 	}
 }
 
+#endif

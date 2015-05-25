@@ -1,4 +1,4 @@
-﻿
+﻿#if UNITY_ANDROID
 
 using UnityEngine;
 using AppodealAds.Common;
@@ -87,4 +87,4 @@ namespace AppodealAds.Android
 	}
 }
 
-
+#endif
