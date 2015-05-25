@@ -24,7 +24,7 @@ namespace AppodealAds.Android
 			activity =
 				playerClass.GetStatic<AndroidJavaObject>("currentActivity");
 			video = new AndroidJavaClass(Utils.VideoClassName);
-			video.CallStatic("setVideoCallbacks", new AdListener(listener, adType));
+			video.CallStatic("setVideoCallbacks", new AdListener(listener, (int)adType));
 		}
 		
 		#region IAppodealAdsVideoClient implementation
@@ -40,12 +40,12 @@ namespace AppodealAds.Android
 		
 		public bool IsLoaded() 
 		{
-			return video.Call<bool>("isLoaded", adType);
+			return video.Call<bool>("isLoaded", (int)adType);
 		}
 		
 		public void ShowVideoAd() 
 		{
-			video.CallStatic<bool>("show", activity, adType);
+			video.CallStatic<bool>("show", activity, (int)adType);
 		}
 		
 		public void DestroyVideoAd() 
@@ -54,27 +54,27 @@ namespace AppodealAds.Android
 		
 		public void Cache()
 		{
-			video.CallStatic("cache", activity, adType);
+			video.CallStatic("cache", activity, (int)adType);
 		}
 		
 		public bool IsPrecache()
 		{
-			return video.CallStatic<bool>("isPrecache", adType);
+			return video.CallStatic<bool>("isPrecache", (int)adType);
 		}
 		
 		public bool ShowWithPriceFloor()
 		{
-			return video.CallStatic<bool>("showWithPriceFloor", activity, adType);
+			return video.CallStatic<bool>("showWithPriceFloor", activity, (int)adType);
 		}
 		
 		public void SetAutoCache(bool autoCache) 
 		{
-			video.CallStatic ("setAutoCache", adType, autoCache);
+			video.CallStatic ("setAutoCache", (int)adType, autoCache);
 		}
 		
 		public void SetOnLoadedTriggerBoth(bool onLoadedTriggerBoth) 
 		{
-			video.CallStatic("setOnLoadedTriggerBoth", adType, onLoadedTriggerBoth);
+			video.CallStatic("setOnLoadedTriggerBoth", (int)adType, onLoadedTriggerBoth);
 		}
 
 		#endregion

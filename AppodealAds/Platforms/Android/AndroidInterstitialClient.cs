@@ -24,7 +24,7 @@ namespace AppodealAds.Android
 			activity =
 				playerClass.GetStatic<AndroidJavaObject>("currentActivity");
 			interstitial = new AndroidJavaClass(Utils.InterstitialClassName);
-			interstitial.CallStatic("setInterstitialCallbacks", new AdListener(listener, adType));
+			interstitial.CallStatic("setInterstitialCallbacks", new AdListener(listener, (int)adType));
 		}
 		
 		#region IAppodealAdsInterstitialClient implementation
@@ -40,12 +40,12 @@ namespace AppodealAds.Android
 		
 		public bool IsLoaded() 
 		{
-			return interstitial.Call<bool>("isLoaded", adType);
+			return interstitial.Call<bool>("isLoaded", (int)adType);
 		}
 		
 		public void ShowInterstitial() 
 		{
-			interstitial.CallStatic<bool>("show", activity, adType);
+			interstitial.CallStatic<bool>("show", activity, (int)adType);
 		}
 		
 		public void DestroyInterstitial() 
@@ -54,27 +54,27 @@ namespace AppodealAds.Android
 
 		public void Cache()
 		{
-			interstitial.CallStatic("cache", activity, adType);
+			interstitial.CallStatic("cache", activity, (int)adType);
 		}
 		
 		public bool IsPrecache()
 		{
-			return interstitial.CallStatic<bool>("isPrecache", adType);
+			return interstitial.CallStatic<bool>("isPrecache", (int)adType);
 		}
 		
 		public bool ShowWithPriceFloor()
 		{
-			return interstitial.CallStatic<bool>("showWithPriceFloor", activity, adType);
+			return interstitial.CallStatic<bool>("showWithPriceFloor", activity, (int)adType);
 		}
 		
 		public void SetAutoCache(bool autoCache) 
 		{
-			interstitial.CallStatic ("setAutoCache", adType, autoCache);
+			interstitial.CallStatic ("setAutoCache", (int)adType, autoCache);
 		}
 		
 		public void SetOnLoadedTriggerBoth(bool onLoadedTriggerBoth) 
 		{
-			interstitial.CallStatic("setOnLoadedTriggerBoth", adType, onLoadedTriggerBoth);
+			interstitial.CallStatic("setOnLoadedTriggerBoth", (int)adType, onLoadedTriggerBoth);
 		}
 
 		

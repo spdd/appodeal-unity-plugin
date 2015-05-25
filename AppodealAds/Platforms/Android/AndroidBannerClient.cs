@@ -24,7 +24,7 @@ namespace AppodealAds.Android
 			activity =
 				playerClass.GetStatic<AndroidJavaObject>("currentActivity");
 			bannerView = new AndroidJavaClass(Utils.BannerViewClassName);
-			bannerView.CallStatic("setBannerCallbacks", new AdListener(listener, adType));
+			bannerView.CallStatic("setBannerCallbacks", new AdListener(listener, (int)adType));
 		}
 		
 		// Creates a banner view.
@@ -41,19 +41,19 @@ namespace AppodealAds.Android
 
 		public bool IsLoaded() 
 		{
-			return bannerView.CallStatic<bool>("isLoaded", adType);
+			return bannerView.CallStatic<bool>("isLoaded", (int)adType);
 		}
 
 		// Show the banner view on the screen.
 		public void ShowBannerView() 
 		{
-			bannerView.CallStatic<bool>("show", activity, adType);
+			bannerView.CallStatic<bool>("show", activity, (int)adType);
 		}
 
 		// Hide the banner view from the screen.
 		public void HideBannerView()
 		{
-			bannerView.CallStatic ("hide", activity, adType);
+			bannerView.CallStatic ("hide", activity, (int)adType);
 		}
 
 		public void DestroyBannerView() 
@@ -62,26 +62,26 @@ namespace AppodealAds.Android
 
 		public void Cache()
 		{
-			bannerView.CallStatic("cache", activity, adType);
+			bannerView.CallStatic("cache", activity, (int)adType);
 		}
 
 		public bool IsPrecache()
 		{
-			return bannerView.CallStatic<bool>("isPrecache", adType);
+			return bannerView.CallStatic<bool>("isPrecache", (int)adType);
 		}
 
 		public bool ShowWithPriceFloor()
 		{
-			return bannerView.CallStatic<bool>("showWithPriceFloor", activity, adType);
+			return bannerView.CallStatic<bool>("showWithPriceFloor", activity, (int)adType);
 		}
 
 		public void SetAutoCache(bool autoCache) {
-			bannerView.CallStatic ("setAutoCache", adType, autoCache);
+			bannerView.CallStatic ("setAutoCache", (int)adType, autoCache);
 		}
 
 		public void SetOnLoadedTriggerBoth(bool onLoadedTriggerBoth) 
 		{
-			bannerView.CallStatic("setOnLoadedTriggerBoth", adType, onLoadedTriggerBoth);
+			bannerView.CallStatic("setOnLoadedTriggerBoth", (int)adType, onLoadedTriggerBoth);
 		}
 	}
 }
