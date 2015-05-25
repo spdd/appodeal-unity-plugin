@@ -12,6 +12,8 @@ namespace AppodealAds.Android
 	public class AndroidAppodealClient : IAppodealAdsClient {
 
 		AndroidJavaClass appodealClass;
+		AndroidJavaObject activity;
+		AndroidJavaClass playerClass;
 
 		// Init sdk
 		public void initSDK(string appKey) {

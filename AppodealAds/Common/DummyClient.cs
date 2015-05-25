@@ -68,5 +68,32 @@ namespace AppodealAds.Common
 		public void DestroyVideoAd() {
 			Debug.Log("Dummy DestroyVideoAd");
 		}
+
+		public void Cache () 
+		{
+			Debug.Log("Dummy Cache");
+		}
+		
+		public bool IsPrecache ()
+		{
+			Debug.Log("Dummy IsPrecache");
+			return true;
+		}
+		
+		public bool ShowWithPriceFloor ()
+		{
+			Debug.Log("Dummy ShowWithPriceFloor");
+			return true;
+		}
+		
+		public void SetAutoCache (bool autoCache)
+		{
+			Debug.Log("Dummy SetAutoCache");
+		}
+		
+		public void SetOnLoadedTriggerBoth(bool onLoadedTriggerBoth) 
+		{
+			Debug.Log("Dummy SetOnLoadedTriggerBoth");
+		}
 	}
 }

@@ -26,7 +26,7 @@ namespace AppodealAds.Android
 		#region Appodeal Ads Unity Plugin class names
 		
 		public const string BannerViewClassName = "com.appodeal.ads.Appodeal";
-		public const string InterstitialClassName = "com.google.unity.ads.Interstitial";
+		public const string InterstitialClassName = "com.appodeal.ads.Appodeal";
 		public const string UnityAdListenerClassName = "com.google.unity.ads.UnityAdListener";
 		
 		#endregion
@@ -47,23 +47,8 @@ namespace AppodealAds.Android
 		#endregion
 		
 		#region JavaObject creators
-		
-		public static AndroidJavaObject GetAdSizeJavaObject(AdSize adSize)
-		{
-			if (adSize.IsSmartBanner)
-			{
-				return new AndroidJavaClass(AdSizeClassName)
-					.GetStatic<AndroidJavaObject>("SMART_BANNER");
-			}
-			else
-			{
-				return new AndroidJavaObject(AdSizeClassName, adSize.Width, adSize.Height);
-			}
-		}
 
-		public static Boolean isLoaded() {
-			return new AndroidJavaClass(BannerViewClassName).CallStatic<Boolean>("isLoaded");
-		}
+		// pass
 		
 		#endregion
 	}

@@ -16,6 +16,8 @@ namespace AppodealAds.Android
 		AndroidJavaObject activity;
 		AndroidJavaClass playerClass;
 
+		AdType adType = AdType.BANNER;
+
 		public AndroidBannerClient(IAdListener listener)
 		{
 			playerClass = new AndroidJavaClass(Utils.UnityActivityClassName);
@@ -26,7 +28,8 @@ namespace AppodealAds.Android
 		}
 		
 		// Creates a banner view.
-		public void CreateBannerView(string appKey, AdPosition position) {
+		public void CreateBannerView(string appKey, AdPosition position) 
+		{
 			//
 		}
 		
@@ -36,43 +39,49 @@ namespace AppodealAds.Android
 			//bannerView.Call("loadAd", Utils.GetAdRequestJavaObject(request));
 		}
 
-		public bool IsLoaded() {
+		public bool IsLoaded() 
+		{
 			return bannerView.CallStatic<bool>("isLoaded");
 		}
 
 		// Show the banner view on the screen.
-		public void ShowBannerView() {
-			bannerView.CallStatic<bool>("show", activity, (int)AdType.BANNER);
+		public void ShowBannerView() 
+		{
+			bannerView.CallStatic<bool>("show", activity, adType);
 		}
 
 		// Hide the banner view from the screen.
 		public void HideBannerView()
 		{
-			bannerView.CallStatic ("hide", activity, (int)AdType.BANNER);
+			bannerView.CallStatic ("hide", activity, adType);
+		}
+
+		public void DestroyBannerView() 
+		{
 		}
 
 		public void Cache()
 		{
-			bannerView.CallStatic("cache", activity, (int)AdType.BANNER);
+			bannerView.CallStatic("cache", activity, adType);
 		}
 
 		public bool IsPrecache()
 		{
-			return bannerView.CallStatic<bool>("isPrecache", (int)AdType.BANNER);
+			return bannerView.CallStatic<bool>("isPrecache", adType);
 		}
 
 		public bool ShowWithPriceFloor()
 		{
-			return bannerView.CallStatic<bool>("showWithPriceFloor", activity, (int)AdType.BANNER);
+			return bannerView.CallStatic<bool>("showWithPriceFloor", activity, adType);
 		}
 
 		public void SetAutoCache(bool autoCache) {
-			bannerView.CallStatic ("setAutoCache", (int)AdType.BANNER, autoCache);
+			bannerView.CallStatic ("setAutoCache", adType, autoCache);
 		}
 
 		public void SetOnLoadedTriggerBoth(bool onLoadedTriggerBoth) 
 		{
-			bannerView.CallStatic("setOnLoadedTriggerBoth", (int)AdType.BANNER, onLoadedTriggerBoth);
+			bannerView.CallStatic("setOnLoadedTriggerBoth", adType, onLoadedTriggerBoth);
 		}
 	}
 }

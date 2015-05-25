@@ -12,38 +12,71 @@ namespace AppodealAds.Android
 {
 	internal class AndroidInterstitialClient : IAppodealAdsInterstitialClient
 	{
-		private AndroidJavaObject interstitial;
+		private AndroidJavaClass interstitial;
+		AndroidJavaObject activity;
+		AndroidJavaClass playerClass;
+
+		AdType adType = AdType.INTERSTITIAL;
 		
 		public AndroidInterstitialClient(IAdListener listener)
 		{
-			AndroidJavaClass playerClass = new AndroidJavaClass(Utils.UnityActivityClassName);
-			AndroidJavaObject activity =
+			playerClass = new AndroidJavaClass(Utils.UnityActivityClassName);
+			activity =
 				playerClass.GetStatic<AndroidJavaObject>("currentActivity");
-			interstitial = new AndroidJavaObject(
-				Utils.InterstitialClassName, activity, new AdListener(listener));
+			interstitial = new AndroidJavaClass(Utils.InterstitialClassName);
+			interstitial.CallStatic("setInterstitialCallbacks", new AdListener(listener));
 		}
 		
 		#region IAppodealAdsInterstitialClient implementation
 		
-		public void CreateInterstitialAd(string adUnitId) {
-			interstitial.Call("create", adUnitId);
+		public void CreateInterstitialAd(string appKey) 
+		{
+			//interstitial.Call("create", appKey);
 		}
 		
 		public void LoadAd(AODAdRequest request) {
-			interstitial.Call("loadAd", Utils.GetAdRequestJavaObject(request));
+			//interstitial.Call("loadAd", Utils.GetAdRequestJavaObject(request));
 		}
 		
-		public bool IsLoaded() {
+		public bool IsLoaded() 
+		{
 			return interstitial.Call<bool>("isLoaded");
 		}
 		
-		public void ShowInterstitial() {
-			interstitial.Call("show");
+		public void ShowInterstitial() 
+		{
+			interstitial.CallStatic<bool>("show", activity, adType);
 		}
 		
-		public void DestroyInterstitial() {
-			interstitial.Call("destroy");
+		public void DestroyInterstitial() 
+		{
 		}
+
+		public void Cache()
+		{
+			interstitial.CallStatic("cache", activity, adType);
+		}
+		
+		public bool IsPrecache()
+		{
+			return interstitial.CallStatic<bool>("isPrecache", adType);
+		}
+		
+		public bool ShowWithPriceFloor()
+		{
+			return interstitial.CallStatic<bool>("showWithPriceFloor", activity, adType);
+		}
+		
+		public void SetAutoCache(bool autoCache) 
+		{
+			interstitial.CallStatic ("setAutoCache", adType, autoCache);
+		}
+		
+		public void SetOnLoadedTriggerBoth(bool onLoadedTriggerBoth) 
+		{
+			interstitial.CallStatic("setOnLoadedTriggerBoth", adType, onLoadedTriggerBoth);
+		}
+
 		
 		#endregion
 	}

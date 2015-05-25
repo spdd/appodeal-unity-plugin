@@ -46,6 +46,31 @@ namespace AppodealAds.Api
 		{
 			client.DestroyBannerView();
 		}
+
+		public void Cache () 
+		{
+			client.Cache ();
+		}
+		
+		public bool IsPrecache ()
+		{
+			return client.IsPrecache ();
+		}
+		
+		public bool ShowWithPriceFloor ()
+		{
+			return client.ShowWithPriceFloor ();
+		}
+		
+		public void SetAutoCache (bool autoCache)
+		{
+			client.SetAutoCache (autoCache);
+		}
+		
+		public void SetOnLoadedTriggerBoth(bool onLoadedTriggerBoth) 
+		{
+			client.SetOnLoadedTriggerBoth (onLoadedTriggerBoth);
+		}
 		
 		#region IAdListener implementation
 		

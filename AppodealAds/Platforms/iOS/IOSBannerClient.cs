@@ -71,6 +71,11 @@ namespace AppodealAds.iOS
 			Externs.AODURequestBannerAd(BannerViewPtr, requestPtr);
 			Externs.AODURelease(requestPtr);
 		}
+
+		public bool IsLoaded() 
+		{
+			return true;
+		}
 		
 		// Show the banner view on the screen.
 		public void ShowBannerView() {
@@ -87,6 +92,28 @@ namespace AppodealAds.iOS
 		{
 			Externs.AODURemoveBannerView(BannerViewPtr);
 			BannerViewPtr = IntPtr.Zero;
+		}
+
+		public void Cache () 
+		{
+		}
+		
+		public bool IsPrecache ()
+		{
+			return true;
+		}
+		
+		public bool ShowWithPriceFloor ()
+		{
+			return true;
+		}
+		
+		public void SetAutoCache (bool autoCache)
+		{
+		}
+		
+		public void SetOnLoadedTriggerBoth(bool onLoadedTriggerBoth) 
+		{
 		}
 		
 		#endregion

@@ -79,6 +79,28 @@ namespace AppodealAds.iOS
 		public void DestroyInterstitial() {
 			InterstitialPtr = IntPtr.Zero;
 		}
+
+		public void Cache () 
+		{
+		}
+		
+		public bool IsPrecache ()
+		{
+			return true;
+		}
+		
+		public bool ShowWithPriceFloor ()
+		{
+			return true;
+		}
+		
+		public void SetAutoCache (bool autoCache)
+		{
+		}
+		
+		public void SetOnLoadedTriggerBoth(bool onLoadedTriggerBoth) 
+		{
+		}
 		
 		#endregion
 		
