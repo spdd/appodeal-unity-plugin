@@ -16,5 +16,15 @@ namespace AppodealAds.Common {
 		
 		// Destroys an InterstitialAd to free up memory.
 		void DestroyInterstitial();
+
+		void Cache ();
+		
+		bool IsPrecache ();
+		
+		bool ShowWithPriceFloor ();
+		
+		void SetAutoCache (bool autoCache);
+		
+		void SetOnLoadedTriggerBoth(bool onLoadedTriggerBoth);
 	}
 }
