@@ -24,7 +24,7 @@ namespace AppodealAds.Android
 			activity =
 				playerClass.GetStatic<AndroidJavaObject>("currentActivity");
 			bannerView = new AndroidJavaClass(Utils.BannerViewClassName);
-			bannerView.CallStatic("setBannerCallbacks", new AdListener(listener));
+			bannerView.CallStatic("setBannerCallbacks", new AdListener(listener, adType));
 		}
 		
 		// Creates a banner view.

@@ -78,7 +78,7 @@ public class AppodealDemo : MonoBehaviour
 		#if UNITY_EDITOR
 		string appKey = "a23f1c3c5f3a996c6f92ffdb6cb7f52ba14b26e45aab3188";
 		#elif UNITY_ANDROID
-		string appKey = "INSERT_APPKEY_HERE";
+		string appKey = "cdefd229902583f073a2d7da5fdbb26ef82f5cb72ba0c37b";
 		#elif UNITY_IPHONE
 		string appKey = "a23f1c3c5f3a996c6f92ffdb6cb7f52ba14b26e45aab3188";
 		#else
@@ -94,9 +94,9 @@ public class AppodealDemo : MonoBehaviour
 		#if UNITY_EDITOR
 		string appKey = "unused";
 		#elif UNITY_ANDROID
-		string appKey = "INSERT_APPKEY_HERE";
+		string appKey = "cdefd229902583f073a2d7da5fdbb26ef82f5cb72ba0c37b";
 		#elif UNITY_IPHONE
-		string appKey = "INSERT_APPKEY_HERE";
+		string appKey = "a23f1c3c5f3a996c6f92ffdb6cb7f52ba14b26e45aab3188";
 		#else
 		string appKey = "unexpected_platform";
 		#endif
@@ -119,9 +119,9 @@ public class AppodealDemo : MonoBehaviour
 		#if UNITY_EDITOR
 		string appKey = "unused";
 		#elif UNITY_ANDROID
-		string appKey = "INSERT_APPKEY_HERE";
+		string appKey = "cdefd229902583f073a2d7da5fdbb26ef82f5cb72ba0c37b";
 		#elif UNITY_IPHONE
-		string appKey = "INSERT_APPKEY_HERE";
+		string appKey = "a23f1c3c5f3a996c6f92ffdb6cb7f52ba14b26e45aab3188";
 		#else
 		string appKey = "unexpected_platform";
 		#endif
@@ -145,9 +145,9 @@ public class AppodealDemo : MonoBehaviour
 		#if UNITY_EDITOR
 		string appKey = "unused";
 		#elif UNITY_ANDROID
-		string appKey = "INSERT_APPKEY_HERE";
+		string appKey = "cdefd229902583f073a2d7da5fdbb26ef82f5cb72ba0c37b";
 		#elif UNITY_IPHONE
-		string appKey = "INSERT_APPKEY_HERE";
+		string appKey = "a23f1c3c5f3a996c6f92ffdb6cb7f52ba14b26e45aab3188";
 		#else
 		string appKey = "unexpected_platform";
 		#endif

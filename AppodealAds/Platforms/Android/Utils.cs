@@ -33,13 +33,10 @@ namespace AppodealAds.Android
 			{
 			case AdType.BANNER:
 				return UnityAdBannerListenerClassName;
-				break;
 			case AdType.INTERSTITIAL:
 				return UnityInterstitialAdListenerClassName;
-				break;
 			case AdType.VIDEO:
 				return UnityVideoAdListenerClassName;
-				break;
 			default:
 				return UnityAdBannerListenerClassName;
 			}
