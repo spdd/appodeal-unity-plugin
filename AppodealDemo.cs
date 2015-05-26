@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using AppodealAds;
 using AppodealAds.Api;
 
 // Example script showing how to invoke the Appodeal Ads Unity plugin.

@@ -24,7 +24,7 @@ namespace AppodealAds.Android
 			activity =
 				playerClass.GetStatic<AndroidJavaObject>("currentActivity");
 			interstitial = new AndroidJavaClass(Utils.InterstitialClassName);
-			interstitial.CallStatic("setInterstitialCallbacks", new AdListener(listener, (int)adType));
+			interstitial.CallStatic("setInterstitialCallbacks", new AdListener(listener, adType));
 		}
 		
 		#region IAppodealAdsInterstitialClient implementation

@@ -24,7 +24,7 @@ namespace AppodealAds.Android
 			activity =
 				playerClass.GetStatic<AndroidJavaObject>("currentActivity");
 			video = new AndroidJavaClass(Utils.VideoClassName);
-			video.CallStatic("setVideoCallbacks", new AdListener(listener, (int)adType));
+			video.CallStatic("setVideoCallbacks", new AdListener(listener, adType));
 		}
 		
 		#region IAppodealAdsVideoClient implementation
