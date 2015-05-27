@@ -55,55 +55,98 @@ namespace AppodealAds.Unity.iOS
 		public static Boolean show(int adTypes)
 		{
 			if (Appodeal.BANNER) {
+				BannerView bannerView = new BannerView("", AdPosition.BottomPortrait);
+				bannerView.SetListener(bannerListener);
+				bannerView.LoadAd(createAdRequest());
 
 			} else if (Appodeal.BANNER_BOTTOM) {
+				BannerView bannerView = new BannerView("", AdPosition.BottomPortrait);
+				bannerView.SetListener(bannerListener);
+				bannerView.LoadAd(createAdRequest());
 				
 			} else if (Appodeal.BANNER_TOP) {
+				BannerView bannerView = new BannerView("", AdPosition.TopPortrait);
+				bannerView.SetListener(bannerListener);
+				bannerView.LoadAd(createAdRequest());
 				
 			} else if (Appodeal.BANNER_CENTER) {
+				BannerView bannerView = new BannerView("", AdPosition.BottomPortrait);
+				bannerView.SetListener(bannerListener);
+				bannerView.LoadAd(createAdRequest());
 				
 			} else if (Appodeal.INTERSTITIAL) {
-
+				InterstitialAd interstitial = new InterstitialAd("");
+				interstitial.SetListener(interstitialListener);
+				interstitial.LoadAd(createAdRequest());
+				if (interstitial.IsLoaded())
+				{
+					interstitial.Show();
+				}
+				else
+				{
+					//print("Interstitial is not ready yet.");
+				}
 			} else if (Appodeal.VIDEO) {
-
+				VideoAd video = new VideoAd("");
+				video.SetListener(videoListener);
+				video.LoadAd(createAdRequest());
+				if (video.IsLoaded())
+				{
+					video.Show();
+				}
+				else
+				{
+					//print("Video is not ready yet.");
+				}
 			}
 
-			return appodealClass.CallStatic<Boolean>("show", activity, adTypes);
+			return true;
 		}
 		
 		public static Boolean showWithPriceFloor(int adTypes)
 		{
-			return appodealClass.CallStatic<Boolean>("showWithPriceFloor", activity, adTypes);	
+			return show(adTypes);	
 		}
 		
 		public static void hide(int adTypes)
 		{
-			appodealClass.CallStatic("hide", activity, adTypes);
+			// TODO:
 		}
 		
 		public static void setAutoCache(int adTypes, Boolean autoCache) 
 		{
-			appodealClass.CallStatic("setAutoCache", adTypes, autoCache);	
+			// TODO:	
 		}
 		
 		public static void setOnLoadedTriggerBoth(int adTypes, Boolean onLoadedTriggerBoth) 
 		{
-			appodealClass.CallStatic("setOnLoadedTriggerBoth", adTypes, onLoadedTriggerBoth);
+			// TODO:
 		}
 		
 		public void disableNetwork(String network) 
 		{
-			appodealClass.CallStatic("disableNetwork", network);
+			// TODO:
 		}
 		
 		public void disableLocationPermissionCheck() 
 		{
-			appodealClass.CallStatic("disableLocationPermissionCheck");
+			// TODO:
 		}
 		
 		public void orientationChange()
 		{
-			appodealClass.CallStatic("orientationChange");
+			// TODO:
 		}
+
+		#region private methods
+
+		// Returns an ad request with custom ad targeting.
+		private AODAdRequest createAdRequest()
+		{
+			return new AODAdRequest();
+			
+		}
+
+		#endregion
 	}
 }
