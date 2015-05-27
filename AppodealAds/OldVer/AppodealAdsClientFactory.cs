@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-using AppodealAds.Common;
+using AppodealAds.Unity.Common;
 
 namespace AppodealAds.Unity
 {

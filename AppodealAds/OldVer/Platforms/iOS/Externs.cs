@@ -32,12 +32,12 @@ namespace AppodealAds.Unity.iOS
 		[DllImport("__Internal")]
 		internal static extern void AODUSetBannerCallbacks(
 			IntPtr bannerView,
-			IOSBannerClient.AODUAdViewDidReceiveAdCallback adReceivedCallback,
-			IOSBannerClient.AODUAdViewDidFailToReceiveAdWithErrorCallback adFailedCallback,
-			IOSBannerClient.AODUAdViewWillPresentScreenCallback willPresentCallback,
-			IOSBannerClient.AODUAdViewWillDismissScreenCallback willDismissCallback,
-			IOSBannerClient.AODUAdViewDidDismissScreenCallback didDismissCallback,
-			IOSBannerClient.AODUAdViewWillLeaveApplicationCallback willLeaveCallback);
+			IOSAppodealClient.AODUAdViewDidReceiveAdCallback adReceivedCallback,
+			IOSAppodealClient.AODUAdViewDidFailToReceiveAdWithErrorCallback adFailedCallback,
+			IOSAppodealClient.AODUAdViewWillPresentScreenCallback willPresentCallback,
+			IOSAppodealClient.AODUAdViewWillDismissScreenCallback willDismissCallback,
+			IOSAppodealClient.AODUAdViewDidDismissScreenCallback didDismissCallback,
+			IOSAppodealClient.AODUAdViewWillLeaveApplicationCallback willLeaveCallback);
 		
 		[DllImport("__Internal")]
 		internal static extern void AODUHideBannerView(IntPtr bannerView);
@@ -62,13 +62,13 @@ namespace AppodealAds.Unity.iOS
 		[DllImport("__Internal")]
 		internal static extern void AODUSetInterstitialCallbacks(
 			IntPtr interstitial,
-			IOSInterstitialClient.AODUInterstitialDidReceiveAdCallback interstitialReceivedCallback,
-			IOSInterstitialClient.AODUInterstitialDidFailToReceiveAdWithErrorCallback
+			IOSAppodealClient.AODUInterstitialDidReceiveAdCallback interstitialReceivedCallback,
+			IOSAppodealClient.AODUInterstitialDidFailToReceiveAdWithErrorCallback
 			interstitialFailedCallback,
-			IOSInterstitialClient.AODUInterstitialWillPresentScreenCallback interstitialWillPresentCallback,
-			IOSInterstitialClient.AODUInterstitialWillDismissScreenCallback interstitialWillDismissCallback,
-			IOSInterstitialClient.AODUInterstitialDidDismissScreenCallback interstitialDidDismissCallback,
-			IOSInterstitialClient.AODUInterstitialWillLeaveApplicationCallback
+			IOSAppodealClient.AODUInterstitialWillPresentScreenCallback interstitialWillPresentCallback,
+			IOSAppodealClient.AODUInterstitialWillDismissScreenCallback interstitialWillDismissCallback,
+			IOSAppodealClient.AODUInterstitialDidDismissScreenCallback interstitialDidDismissCallback,
+			IOSAppodealClient.AODUInterstitialWillLeaveApplicationCallback
 			interstitialWillLeaveCallback);
 		
 		[DllImport("__Internal")]
@@ -91,13 +91,13 @@ namespace AppodealAds.Unity.iOS
 		[DllImport("__Internal")]
 		internal static extern void AODUSetVideoCallbacks(
 			IntPtr video,
-			IOSVideoClient.AODUVideoAdShouldRewardUserCallback videoRewardCallback,
-			IOSVideoClient.AODUVideoDidReceiveAdCallback videoReceivedCallback,
-			IOSVideoClient.AODUVideoDidFailToReceiveAdWithErrorCallback
+			IOSAppodealClient.AODUVideoAdShouldRewardUserCallback videoRewardCallback,
+			IOSAppodealClient.AODUVideoDidReceiveAdCallback videoReceivedCallback,
+			IOSAppodealClient.AODUVideoDidFailToReceiveAdWithErrorCallback
 			videoFailedCallback,
-			IOSVideoClient.AODUVideoWillPresentScreenCallback videoDidPresentCallback,
-			IOSVideoClient.AODUVideoDidDismissScreenCallback videoDidDismissCallback,
-			IOSVideoClient.AODUVideoWillLeaveApplicationCallback
+			IOSAppodealClient.AODUVideoWillPresentScreenCallback videoDidPresentCallback,
+			IOSAppodealClient.AODUVideoDidDismissScreenCallback videoDidDismissCallback,
+			IOSAppodealClient.AODUVideoWillLeaveApplicationCallback
 			videoWillLeaveCallback);
 		
 		[DllImport("__Internal")]
